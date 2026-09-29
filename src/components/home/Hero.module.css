@@ -39,7 +39,9 @@
 
 .img img {
   object-fit: cover;
-  object-position: 50% 55%;
+  /* The Springdale master is square: landscape screens crop top and bottom (keeping the roof and
+     garden), portrait screens crop the sides and keep the house rather than the garage. */
+  object-position: 22% 46%;
 }
 
 .word {
@@ -60,9 +62,11 @@
   pointer-events: none;
 }
 
+/* The copy inside the window. Navy, because the Springdale facade is light: white letters
+   would disappear against the weatherboards and white balcony. */
 .wordIn {
   z-index: 1;
-  color: var(--white);
+  color: var(--navy);
 }
 
 .word [data-l] {

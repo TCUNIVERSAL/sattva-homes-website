@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     locale: "en_AU",
     type: "website",
-    images: ["/images/home/hero-gardenwood.jpg"],
+    images: ["/images/home/hero-springdale.jpg"],
   },
 };
 

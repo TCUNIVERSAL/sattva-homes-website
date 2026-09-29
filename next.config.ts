@@ -4,8 +4,8 @@ const nextConfig: NextConfig = {
   images: {
     // AVIF first: noticeably cleaner than WebP at the same size for photographic renders.
     formats: ["image/avif", "image/webp"],
-    // 75 for thumbnails and cards, 90 for full-screen imagery (hero, design pages).
-    qualities: [75, 90],
+    // 75 for thumbnails and cards, 90 for full-screen imagery (design pages), 95 for the homepage hero.
+    qualities: [75, 90, 95],
   },
 };
 

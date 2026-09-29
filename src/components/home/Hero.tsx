@@ -20,7 +20,7 @@ export default function Hero({ designCount }: { designCount: number }) {
   useGSAP(() => {
     if (!enabled) return;
     const q = gsap.utils.selector(root);
-    // Two copies of the wordmark (navy outside the window, white inside it), 6 letters each.
+    // Two copies of the wordmark (one under the window, one inside it), 6 letters each.
     const letters = q(`.${styles.word} [data-l]`);
     const n = (i: number) => i % LETTERS.length;
     const foot = q(`.${styles.foot} > *`);
@@ -79,9 +79,9 @@ export default function Hero({ designCount }: { designCount: number }) {
 
       <div ref={win} className={styles.win}>
         <div className={styles.img}>
-          <Image src="/images/home/hero-gardenwood.jpg" alt="Gardenwood double storey home design by Sattva Homes, lit at dusk" fill priority quality={90} sizes="100vw" />
+          <Image src="/images/home/hero-springdale.jpg" alt="Springdale double storey home design by Sattva Homes, with a front verandah, balcony and double garage" fill priority quality={95} sizes="100vw" />
         </div>
-        {/* ...and a white copy clipped to the window, so the word turns white where it crosses the photo. */}
+        {/* ...and a copy clipped to the window, so the word stays on top of the photo (its colour is set in the CSS). */}
         <div className={`${styles.word} ${styles.wordIn}`} aria-hidden="true">
           {LETTERS.map((l, i) => <span key={i} data-l>{l}</span>)}
         </div>
@@ -98,7 +98,7 @@ export default function Hero({ designCount }: { designCount: number }) {
 
       <div className={styles.cap}>
         <p className="label">Featured · Essence Series</p>
-        <h2 className="display">Gardenwood</h2>
+        <h2 className="display">Springdale</h2>
       </div>
     </section>
   );

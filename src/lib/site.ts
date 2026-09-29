@@ -81,7 +81,7 @@ export const businessJsonLd = {
   name: site.name,
   url: site.url,
   logo: `${site.url}/images/brand/sattva-logo.png`,
-  image: `${site.url}/images/home/hero-gardenwood.jpg`,
+  image: `${site.url}/images/home/hero-springdale.jpg`,
   description: site.description,
   slogan: site.slogan,
   telephone: "+61 7 3708 1091",
