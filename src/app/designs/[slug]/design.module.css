@@ -73,6 +73,12 @@
   gap: 36px;
 }
 
+.lede {
+  max-width: 60ch;
+  font-size: 18px;
+  color: var(--slate);
+}
+
 .specs {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

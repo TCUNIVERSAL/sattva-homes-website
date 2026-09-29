@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Bodoni_Moda } from "next/font/google";
 import { MotionProvider } from "@/lib/motion";
-import { site } from "@/lib/site";
+import { site, businessJsonLd, jsonLd } from "@/lib/site";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/layout/SmoothScroll";
@@ -27,11 +27,13 @@ const bodoni = Bodoni_Moda({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} · Brisbane home builder · ${site.slogan}`,
+    default: `Brisbane Home Builder & House Designs · ${site.name}`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
   openGraph: {
+    title: `Brisbane Home Builder & House Designs · ${site.name}`,
+    description: site.description,
     siteName: site.name,
     locale: "en_AU",
     type: "website",
@@ -48,6 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en-AU" className={`${archivo.variable} ${bodoni.variable}`}>
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(businessJsonLd)} />
         <MotionProvider>
           <SmoothScroll />
           <Header />

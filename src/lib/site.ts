@@ -7,7 +7,7 @@ export const site = {
   /** The slogan from the current site. */
   slogan: "Where smart living begins",
   description:
-    "Sattva Homes is a Brisbane home builder with 128 single and double storey designs across three series. Visit the Willawong display home.",
+    "Sattva Homes is a Brisbane home builder with 128 single and double storey house designs. Find one to suit your block and visit our Willawong display home.",
   phone: "07 3708 1091",
   phoneHref: "tel:+61737081091",
   email: "info@sattva.com.au",
@@ -18,8 +18,8 @@ export const site = {
     postcode: "4110",
   },
   hours: [
-    { days: "Mon–Fri", time: "11am–6pm" },
-    { days: "Sat–Sun", time: "9am–5pm" },
+    { days: "Mon–Fri", time: "11am–6pm", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "11:00", closes: "18:00" },
+    { days: "Sat–Sun", time: "9am–5pm", dayOfWeek: ["Saturday", "Sunday"], opens: "09:00", closes: "17:00" },
   ],
   stats: [
     { value: 73, prefix: "", suffix: "+", label: "Homes completed" },
@@ -67,9 +67,42 @@ export const site = {
 export const nav = [
   { href: "/", label: "Home" },
   { href: "/designs", label: "Designs" },
-  { href: "/#living", label: "Living" },
-  { href: "/#how-we-build", label: "How we build" },
+  { href: "/#how-we-build", label: "How it works" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
 export const addressLine = `${site.address.street}, ${site.address.suburb} ${site.address.state} ${site.address.postcode}`;
+
+/** Business details for search engines (schema.org), shown on every page. */
+export const businessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "@id": `${site.url}/#business`,
+  name: site.name,
+  url: site.url,
+  logo: `${site.url}/images/brand/sattva-logo.png`,
+  image: `${site.url}/images/home/hero-gardenwood.jpg`,
+  description: site.description,
+  slogan: site.slogan,
+  telephone: "+61 7 3708 1091",
+  email: site.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.address.street,
+    addressLocality: site.address.suburb,
+    addressRegion: site.address.state,
+    postalCode: site.address.postcode,
+    addressCountry: "AU",
+  },
+  openingHoursSpecification: site.hours.map((h) => ({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: h.dayOfWeek,
+    opens: h.opens,
+    closes: h.closes,
+  })),
+};
+
+/** Renders a schema.org object as a JSON-LD script body, escaping "<" as the Next.js docs recommend. */
+export function jsonLd(data: object): { __html: string } {
+  return { __html: JSON.stringify(data).replace(/</g, "\\u003c") };
+}

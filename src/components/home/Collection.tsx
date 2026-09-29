@@ -41,11 +41,11 @@ export default function Collection({ designs, series, total }: { designs: Design
   }, { scope: root, dependencies: [enabled], revertOnUpdate: true });
 
   return (
-    <section ref={root} className={styles.coll} id="collection" aria-label="The collection">
+    <section ref={root} className={styles.coll} id="collection" aria-label="Featured house designs">
       <div ref={track} className={styles.track}>
         <div className={styles.intro}>
-          <h2 className="display">Three series.<br /><span className={styles.nowrap}><span className="serif">{total}</span> homes.</span></h2>
-          <p>Single and double storey designs for blocks from 4.5 m wide. Start with one you love, then make it yours.</p>
+          <h2 className="display">Three series.<br /><span className={styles.nowrap}><span className="serif">{total}</span> house</span> designs.</h2>
+          <p>Single and double storey home designs for blocks from 4.5 m wide. Start with a floor plan you love, then make it yours.</p>
           <div className={styles.series}>
             {series.map((s) => (
               <Link key={s.id} href={`/designs?series=${s.id}`}><b>{s.name}</b><span>{s.count} designs</span></Link>
@@ -56,7 +56,7 @@ export default function Collection({ designs, series, total }: { designs: Design
         {designs.map((d, i) => (
           <Link key={d.slug} href={`/designs/${d.slug}`} className={styles.card}>
             <div className={styles.ph}>
-              <Image src={d.image} alt={`${d.name} facade`} fill sizes="(max-width: 900px) 100vw, 34vw" />
+              <Image src={d.image} alt={`${d.name} ${d.storeys === 2 ? "double" : "single"} storey house design facade`} fill sizes="(max-width: 900px) 100vw, 34vw" />
             </div>
             <div className={styles.meta}>
               <h3 className="display">{d.name}</h3>

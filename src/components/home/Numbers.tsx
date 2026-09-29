@@ -28,7 +28,7 @@ export default function Numbers() {
     <section ref={root} className={styles.nums} aria-label="Sattva in numbers">
       <div className={styles.head}>
         <h2 className="display">Built with <span className="serif">care,</span> one home at a time.</h2>
-        <p>A growing Brisbane builder, and the numbers so far.</p>
+        <p>A growing Brisbane home builder, and the new homes we&apos;ve delivered so far.</p>
       </div>
       <div className={styles.grid}>
         {site.stats.map((s) => (

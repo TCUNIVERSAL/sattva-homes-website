@@ -13,7 +13,7 @@ export default function DesignCard({ design: d }: { design: Design }) {
       <div className={`${styles.ph} ${wide ? styles.wide : ""}`}>
         {/* Wide panoramas show whole, over a soft blurred copy, instead of losing both ends of the house. */}
         {wide && <Image src={d.image} alt="" aria-hidden="true" fill sizes="30vw" className={styles.backdrop} />}
-        <Image src={d.image} alt={`${d.name} facade`} fill sizes={SIZES} />
+        <Image src={d.image} alt={`${d.name} ${d.storeys === 2 ? "double" : "single"} storey house design facade`} fill sizes={SIZES} />
       </div>
       <div className={styles.meta}>
         <h3>{d.name}</h3>

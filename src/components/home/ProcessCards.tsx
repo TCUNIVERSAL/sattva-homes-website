@@ -21,10 +21,10 @@ export default function ProcessCards() {
   }, { scope: root, dependencies: [enabled], revertOnUpdate: true });
 
   return (
-    <section ref={root} className={styles.proc} id="how-we-build" aria-label="How we build">
+    <section ref={root} className={styles.proc} id="how-we-build" aria-label="How it works">
       <div className={styles.head}>
         <h2 className="display">From first <span className="serif">hello</span> to handing you the keys.</h2>
-        <p>Five stages, one team. You always know what happens next.</p>
+        <p>Five steps, one team. You always know what happens next.</p>
       </div>
       <div className={styles.stack}>
         {BUILD_STAGES.map((s, i) => (

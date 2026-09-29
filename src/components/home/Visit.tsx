@@ -20,11 +20,11 @@ export default function Visit() {
   }, { scope: root, dependencies: [enabled], revertOnUpdate: true });
 
   return (
-    <section ref={root} className={styles.visit} id="visit" aria-label="Visit the display home">
+    <section ref={root} className={styles.visit} id="visit" aria-label="Visit our Willawong display home">
       <div className={styles.bg} aria-hidden="true">
         <Image src="/images/home/windermere.jpg" alt="" fill sizes="100vw" />
       </div>
-      <h2 className={`display ${styles.title}`}>Come and<br />see it <span className="serif">in person.</span></h2>
+      <h2 className={`display ${styles.title}`}>Visit our<br />display <span className="serif">home.</span></h2>
       <p className={styles.intro}>{site.displayHomeIntro}</p>
       <div className={styles.row}>
         <MagneticButton href="/contact?enquiry=visit" className={styles.mag}>Book a<br />visit</MagneticButton>

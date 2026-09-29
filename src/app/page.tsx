@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Preloader from "@/components/home/Preloader";
 import Hero from "@/components/home/Hero";
 import Manifesto from "@/components/home/Manifesto";
@@ -9,6 +10,8 @@ import Values from "@/components/home/Values";
 import Build from "@/components/home/Build";
 import Visit from "@/components/home/Visit";
 import { getAllDesigns, getFeaturedDesigns, getSeries } from "@/lib/designs";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 // Section order matters: pinned sections (Hero, Collection, Build) register their
 // scroll triggers in page order so everything below them measures correctly.

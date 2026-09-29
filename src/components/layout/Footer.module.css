@@ -1,12 +1,9 @@
 .foot {
   background: var(--navy);
   color: var(--bone);
-  padding: 80px var(--pad) 0;
+  padding: 80px var(--pad) calc(28px + env(safe-area-inset-bottom, 0px));
   display: grid;
-  /* minmax(0, 1fr) stops the nowrap wordmark from widening every row. */
-  grid-template-columns: minmax(0, 1fr);
   gap: 60px;
-  overflow: hidden;
 }
 
 .cols {
@@ -73,20 +70,6 @@
   color: var(--mist);
   border-top: 1px solid var(--line);
   padding-top: 20px;
-}
-
-.giant {
-  font-weight: 900;
-  font-stretch: 125%;
-  /* ~5.4em wide at weight 900, so this fills the space between the side margins. */
-  font-size: calc((100vw - 2 * var(--pad)) / 5.45);
-  line-height: 0.74;
-  letter-spacing: -0.04em;
-  color: var(--gold);
-  white-space: nowrap;
-  text-align: center;
-  margin-bottom: -2.2vw;
-  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 @media (max-width: 900px) {

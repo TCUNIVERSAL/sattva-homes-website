@@ -99,7 +99,7 @@
   color: var(--b-accent);
 }
 
-.stage h2 {
+.stage h3 {
   font-size: clamp(40px, 4.6vw, 76px);
   letter-spacing: -0.035em;
 }

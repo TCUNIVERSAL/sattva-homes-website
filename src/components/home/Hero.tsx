@@ -21,7 +21,7 @@ export default function Hero({ designCount }: { designCount: number }) {
     if (!enabled) return;
     const q = gsap.utils.selector(root);
     // Two copies of the wordmark (navy outside the window, white inside it), 6 letters each.
-    const letters = q(`.${styles.word} span`);
+    const letters = q(`.${styles.word} [data-l]`);
     const n = (i: number) => i % LETTERS.length;
     const foot = q(`.${styles.foot} > *`);
 
@@ -70,26 +70,27 @@ export default function Hero({ designCount }: { designCount: number }) {
   }, { scope: root, dependencies: [enabled], revertOnUpdate: true });
 
   return (
-    <section ref={root} className={styles.hero} aria-label="Sattva Homes">
-      {/* Navy wordmark on ivory, under the window... */}
-      <h1 className={styles.word} aria-label="Sattva">
-        {LETTERS.map((l, i) => <span key={i} aria-hidden="true">{l}</span>)}
+    <section ref={root} className={styles.hero} aria-label="Sattva Homes, Brisbane home builder">
+      {/* Navy wordmark on ivory, under the window. The heading text for search engines and screen readers is the hidden line. */}
+      <h1 className={styles.word}>
+        <span className="visually-hidden">Sattva Homes: home builder in Brisbane. </span>
+        {LETTERS.map((l, i) => <span key={i} data-l aria-hidden="true">{l}</span>)}
       </h1>
 
       <div ref={win} className={styles.win}>
         <div className={styles.img}>
-          <Image src="/images/home/hero-gardenwood.jpg" alt="The Gardenwood design at dusk" fill priority quality={90} sizes="100vw" />
+          <Image src="/images/home/hero-gardenwood.jpg" alt="Gardenwood double storey home design by Sattva Homes, lit at dusk" fill priority quality={90} sizes="100vw" />
         </div>
         {/* ...and a white copy clipped to the window, so the word turns white where it crosses the photo. */}
         <div className={`${styles.word} ${styles.wordIn}`} aria-hidden="true">
-          {LETTERS.map((l, i) => <span key={i}>{l}</span>)}
+          {LETTERS.map((l, i) => <span key={i} data-l>{l}</span>)}
         </div>
       </div>
 
       <div className={styles.foot}>
         <p className={styles.tag}>Homes in <b>balance.</b></p>
         <p className={`label ${styles.mid}`}>
-          <span>{designCount} designs · Three series</span>
+          <span>Brisbane home builder · {designCount} house designs</span>
           <BrisbaneClock fallback="Willawong, Brisbane" template={(t) => `${t} in Willawong`} />
         </p>
         <p className={`label ${styles.scroll}`}>Scroll <i /></p>

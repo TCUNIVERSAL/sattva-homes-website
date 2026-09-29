@@ -6,8 +6,9 @@ import { site, addressLine } from "@/lib/site";
 import styles from "./contact.module.css";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: `Talk to Sattva Homes about your new home. Call ${site.phone}, email ${site.email} or visit our display home at ${addressLine}.`,
+  title: "Contact Us & Book a Display Home Visit",
+  description: `Contact Sattva Homes, Brisbane home builder. Call ${site.phone}, send an enquiry or visit our display home at ${addressLine}.`,
+  alternates: { canonical: "/contact" },
 };
 
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Sattva Homes, ${addressLine}`)}`;
@@ -18,8 +19,11 @@ export default function ContactPage() {
     <main className={styles.page}>
       <header className={styles.head}>
         <span className="label">Get in touch</span>
-        <h1 className="display">Let&apos;s talk about your <span className="serif">dream home.</span></h1>
-        <p>Unlock endless possibilities with our diverse floor plans. Your vision, our design.</p>
+        <h1 className="display">Talk to us about your <span className="serif">new home.</span></h1>
+        <p>
+          Call, email or send an enquiry below, or book a visit to our display home in Willawong, Brisbane.
+          We&apos;ll help you find the right design for your block.
+        </p>
       </header>
 
       <div className={styles.body}>

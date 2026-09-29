@@ -23,7 +23,7 @@ const subscribe = () => () => {};
 const useWebGL = () => useSyncExternalStore(subscribe, webglSupported, () => false);
 
 /**
- * "Watch it get built": a pinned section where scrolling builds a 3D house stage by stage.
+ * "Your journey": a pinned section where scrolling walks through the five steps while a 3D house builds.
  * Falls back to stacked process cards without motion or WebGL.
  */
 export default function Build() {
@@ -88,15 +88,15 @@ function BuildScene() {
   }, { scope: root });
 
   return (
-    <section ref={root} className={`${styles.build} ${stage === 4 ? styles.night : ""}`} id="how-we-build" aria-label="Watch a Sattva home get built">
+    <section ref={root} className={`${styles.build} ${stage === 4 ? styles.night : ""}`} id="how-we-build" aria-label="How building your new home works">
       <canvas ref={canvas} className={styles.canvas} aria-hidden="true" />
       <div className={styles.ui}>
-        <span className={`label ${styles.label}`}>Watch it get built</span>
+        <h2 className={`label ${styles.label}`}>How building your new home works</h2>
         <div className={styles.stages}>
           {BUILD_STAGES.map((s, i) => (
             <div key={s.title} className={`${styles.stage} ${i === stage ? styles.on : ""}`} aria-hidden={i !== stage}>
               <span className="serif">{String(i + 1).padStart(2, "0")}</span>
-              <h2 className="display">{s.title}</h2>
+              <h3 className="display">{s.title}</h3>
               <p>{s.text}</p>
             </div>
           ))}
@@ -108,7 +108,7 @@ function BuildScene() {
           {BUILD_STAGES.map((s, i) => <span key={s.short} className={i === stage ? styles.on : ""}>{s.short}</span>)}
         </div>
       </div>
-      <span className={`label ${styles.hint}`}>Keep scrolling to build</span>
+      <span className={`label ${styles.hint}`}>Keep scrolling</span>
     </section>
   );
 }

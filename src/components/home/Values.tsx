@@ -24,11 +24,11 @@ export default function Values() {
   return (
     <section ref={root} className={styles.values} id="why-sattva" aria-label="Why build with Sattva">
       <div className={styles.head}>
-        <span className={`label ${styles.label}`}>Why build with Sattva</span>
-        <h2 className="display">More than a place <span className="serif">to live.</span></h2>
+        <span className={`label ${styles.label}`}>More than a place to live</span>
+        <h2 className="display">Why build <span className="serif">with Sattva?</span></h2>
         <p>
-          Your home is a sanctuary where your aspirations come to life, your style finds expression and your vision
-          becomes reality. This is how we get you there.
+          Building a new home in Brisbane is a big step. From a tailored floor plan to the final walkthrough, this is
+          what you can expect when Sattva Homes builds yours.
         </p>
       </div>
       <ul className={styles.list}>
