@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { useMotion } from "@/lib/motion";
 import BrisbaneClock from "@/components/ui/BrisbaneClock";
+import { site } from "@/lib/site";
 import { INTRO_DONE } from "./Preloader";
 import styles from "./Hero.module.css";
 
@@ -88,7 +89,7 @@ export default function Hero({ designCount }: { designCount: number }) {
       </div>
 
       <div className={styles.foot}>
-        <p className={styles.tag}>Homes in <b>balance.</b></p>
+        <p className={styles.tag}>Where smart living <b>begins.</b></p>
         <p className={`label ${styles.mid}`}>
           <span>Brisbane home builder · {designCount} house designs</span>
           <BrisbaneClock fallback="Willawong, Brisbane" template={(t) => `${t} in Willawong`} />
@@ -96,9 +97,13 @@ export default function Hero({ designCount }: { designCount: number }) {
         <p className={`label ${styles.scroll}`}>Scroll <i /></p>
       </div>
 
+      {/* Once the window is full screen, the brand takes over the photo. */}
       <div className={styles.cap}>
-        <p className="label">Featured · Essence Series</p>
-        <h2 className="display">Springdale</h2>
+        <Image src="/images/brand/sattva-logo-reversed.png" alt="" width={928} height={800} className={styles.capLogo} />
+        <div className={styles.capText}>
+          <h2 className="display">Sattva Homes</h2>
+          <p className={`serif ${styles.capSlogan}`}>{site.slogan}.</p>
+        </div>
       </div>
     </section>
   );

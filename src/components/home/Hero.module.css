@@ -128,15 +128,25 @@
   z-index: 2;
   left: var(--pad);
   color: var(--white);
+  right: var(--pad);
   bottom: calc(32px + env(safe-area-inset-bottom, 0px));
-  display: grid;
-  gap: 6px;
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(16px, 2.4vw, 36px);
   opacity: 0;
 }
 
-.cap p {
-  color: var(--gold-2);
-  font-weight: 600;
+.capLogo {
+  flex: none;
+  width: auto;
+  height: clamp(84px, 11vw, 168px);
+  filter: drop-shadow(0 4px 24px rgba(12, 22, 38, 0.5));
+}
+
+.capText {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
 }
 
 .cap p,
@@ -146,6 +156,19 @@
 
 .cap h2 {
   font-size: clamp(40px, 7vw, 110px);
+  line-height: 0.9;
+}
+
+.capSlogan {
+  font-size: clamp(20px, 2.2vw, 32px);
+  color: var(--gold-2);
+}
+
+@media (max-width: 700px) {
+  .cap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* Without motion the photo fills the hero, so the footer text goes light. */

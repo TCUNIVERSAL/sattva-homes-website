@@ -72,14 +72,14 @@
   transition: color 0.8s;
 }
 
+/* All five stages share one grid cell, so the box is as tall as the longest stage
+   and the progress bar below can never overlap the text. */
 .stages {
-  position: relative;
-  height: clamp(250px, 34vh, 320px);
+  display: grid;
 }
 
 .stage {
-  position: absolute;
-  inset: 0;
+  grid-area: 1 / 1;
   display: grid;
   align-content: start;
   gap: 14px;
@@ -166,9 +166,6 @@
     transform: none;
     width: auto;
     gap: 16px;
-  }
-  .stages {
-    height: 190px;
   }
   .stage p {
     font-size: 15px;

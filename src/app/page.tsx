@@ -20,13 +20,13 @@ export default function HomePage() {
     <main>
       <Preloader />
       <Hero designCount={getAllDesigns().length} />
-      <Manifesto />
       <Marquee />
       <Collection designs={getFeaturedDesigns()} series={getSeries()} total={getAllDesigns().length} />
+      <Build />
+      <Manifesto />
       <DayAtHome />
       <Numbers />
       <Values />
-      <Build />
       <Visit />
     </main>
   );
