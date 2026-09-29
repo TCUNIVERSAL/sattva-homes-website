@@ -1,0 +1,128 @@
+/* Sattva Homes: brand tokens and base styles. Components style themselves with CSS Modules. */
+:root {
+  /* Brand: navy and gold from the logo */
+  --night: #0c1626;
+  --navy: #19283f;
+  --navy-2: #22344f;
+  --gold: #ac8654;
+  --gold-2: #d4b283;
+  --gold-ink: #8a6737; /* gold dark enough for text on light backgrounds */
+
+  /* Light neutrals: the site is mostly warm ivory, with sand for alternate sections */
+  --ivory: #f7f5f0;
+  --sand: #eee9e0;
+  --paper: #eceef1;
+  --bone: #f4f5f7;
+  --white: #ffffff;
+  --slate: #46536a;   /* body text on light */
+  --stone: #6b7486;   /* labels and muted text on light */
+  --line-dark: rgba(25, 40, 63, 0.14);
+
+  /* On navy sections */
+  --mist: #8f9bae;
+  --line: rgba(244, 245, 247, 0.14);
+
+  --font-sans: var(--font-archivo), system-ui, "Segoe UI", sans-serif;
+  --font-serif: var(--font-bodoni), "Didot", "Bodoni 72", Georgia, serif;
+
+  --pad: clamp(16px, 4vw, 56px);
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--ivory);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--navy);
+  font: 400 16px/1.55 var(--font-sans);
+  font-stretch: 100%;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, p {
+  margin: 0;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+button {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--night);
+}
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ---------- Shared type utilities ---------- */
+.label {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* The serif italic accent used inside headlines */
+.serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-stretch: 100%;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+
+.display {
+  font-weight: 800;
+  font-stretch: 125%;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

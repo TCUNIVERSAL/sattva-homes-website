@@ -1,0 +1,105 @@
+.form {
+  display: grid;
+  gap: 22px;
+  padding: clamp(24px, 4vw, 48px);
+  border: 1px solid var(--line-dark);
+  border-radius: 16px;
+  background: var(--white);
+}
+
+.context {
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: rgba(172, 134, 84, 0.14);
+  color: var(--gold-ink);
+}
+
+.context b {
+  color: var(--navy);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.field span {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--line-dark);
+  border-radius: 10px;
+  background: var(--ivory);
+  color: var(--navy);
+  font: inherit;
+  font-size: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(172, 134, 84, 0.2);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 22px;
+}
+
+.actions button {
+  padding: 15px 28px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--navy);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.actions button:hover {
+  background: var(--gold-ink);
+}
+
+.actions p {
+  flex: 1 1 260px;
+  font-size: 14px;
+  color: var(--stone);
+}
+
+.actions b {
+  color: var(--navy);
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

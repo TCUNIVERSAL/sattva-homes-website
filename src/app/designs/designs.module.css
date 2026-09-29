@@ -1,0 +1,35 @@
+.page {
+  min-height: 100vh;
+  padding: clamp(120px, 14vw, 180px) var(--pad) 120px;
+  background: var(--ivory);
+}
+
+.head {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 48px;
+}
+
+.head :global(.label) {
+  color: var(--gold-ink);
+}
+
+.head h1 {
+  font-size: clamp(48px, 8vw, 140px);
+  line-height: 0.86;
+  letter-spacing: -0.04em;
+}
+
+.head h1 :global(.serif) {
+  color: var(--gold-ink);
+}
+
+.head p {
+  max-width: 52ch;
+  font-size: 18px;
+  color: var(--stone);
+}
+
+.loading {
+  color: var(--stone);
+}

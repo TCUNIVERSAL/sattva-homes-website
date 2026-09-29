@@ -1,0 +1,32 @@
+.mani {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) 4fr;
+  gap: 40px;
+  padding: clamp(100px, 16vw, 220px) var(--pad);
+  background: var(--ivory);
+}
+
+.label {
+  color: var(--gold-ink);
+  padding-top: 14px;
+}
+
+.text {
+  font-size: clamp(30px, 4.6vw, 76px);
+  line-height: 1.04;
+  font-weight: 600;
+  font-stretch: 112%;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.w:global(.serif) {
+  color: var(--gold-ink);
+}
+
+@media (max-width: 900px) {
+  .mani {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

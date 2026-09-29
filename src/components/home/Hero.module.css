@@ -1,0 +1,166 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--ivory);
+}
+
+/* Static fallback shows the whole photo; with motion on, JS sets the house polygon. */
+.win {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+:global(html.motion) .win {
+  clip-path: polygon(50% 18%, 67% 34%, 67% 82%, 33% 82%, 33% 34%);
+}
+
+.win::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* Darkens only the bottom, where the caption sits once the window is full screen. */
+  background: linear-gradient(180deg, rgba(12, 22, 38, 0) 55%, rgba(12, 22, 38, 0.5) 78%, rgba(12, 22, 38, 0.88));
+}
+
+.img {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 60%;
+}
+
+:global(html.motion) .img {
+  transform: scale(1.14);
+}
+
+.img img {
+  object-fit: cover;
+  object-position: 50% 55%;
+}
+
+.word {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-58%);
+  display: flex;
+  justify-content: center;
+  font-weight: 800;
+  font-stretch: 125%;
+  /* The word is ~5.22em wide at this width axis, so size it to fit between the side margins. */
+  font-size: clamp(48px, min(calc((100vw - 2 * var(--pad)) / 5.3), 32vh), 300px);
+  line-height: 0.8;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  pointer-events: none;
+}
+
+.wordIn {
+  z-index: 1;
+  color: var(--white);
+}
+
+.word span {
+  display: inline-block;
+  will-change: transform;
+}
+
+.foot {
+  position: absolute;
+  z-index: 2;
+  left: var(--pad);
+  right: var(--pad);
+  bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 20px;
+}
+
+.tag {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(26px, 3.2vw, 46px);
+  line-height: 1;
+}
+
+.tag b {
+  color: var(--gold-ink);
+  font-weight: 400;
+}
+
+.mid {
+  display: grid;
+  gap: 6px;
+  text-align: center;
+  color: var(--stone);
+}
+
+.mid span + span {
+  color: var(--gold-ink);
+}
+
+.scroll {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.scroll i {
+  display: block;
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(var(--gold), transparent);
+}
+
+.cap {
+  position: absolute;
+  z-index: 2;
+  left: var(--pad);
+  color: var(--white);
+  bottom: calc(32px + env(safe-area-inset-bottom, 0px));
+  display: grid;
+  gap: 6px;
+  opacity: 0;
+}
+
+.cap p {
+  color: var(--gold-2);
+  font-weight: 600;
+}
+
+.cap p,
+.cap h2 {
+  text-shadow: 0 2px 24px rgba(12, 22, 38, 0.6);
+}
+
+.cap h2 {
+  font-size: clamp(40px, 7vw, 110px);
+}
+
+/* Without motion the photo fills the hero, so the footer text goes light. */
+:global(html:not(.motion)) .foot,
+:global(html:not(.motion)) .tag b,
+:global(html:not(.motion)) .mid,
+:global(html:not(.motion)) .mid span + span {
+  color: var(--white);
+}
+
+:global(html:not(.motion)) .win::after {
+  background: linear-gradient(180deg, rgba(12, 22, 38, 0.1) 40%, rgba(12, 22, 38, 0.8));
+}
+
+@media (max-width: 900px) {
+  .foot {
+    grid-template-columns: 1fr auto;
+  }
+  .mid {
+    display: none;
+  }
+}

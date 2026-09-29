@@ -1,0 +1,131 @@
+.finder {
+  display: grid;
+  gap: 28px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 36px;
+  padding: 24px 0;
+  border-block: 1px solid var(--line-dark);
+}
+
+.group {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.groupLabel {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.groupLabel b {
+  color: var(--gold-ink);
+  font-weight: 600;
+}
+
+.seg {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid var(--line-dark);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.seg button {
+  padding: 8px 16px;
+  border: 0;
+  border-right: 1px solid var(--line-dark);
+  background: transparent;
+  color: var(--navy);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.seg button:last-child {
+  border-right: 0;
+}
+
+.seg button:hover {
+  background: var(--sand);
+}
+
+.seg button[aria-pressed="true"] {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.group input[type="range"] {
+  width: min(320px, 80vw);
+  accent-color: var(--navy);
+  height: 28px;
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: var(--stone);
+}
+
+.bar b {
+  color: var(--navy);
+  font-size: 20px;
+}
+
+.barRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.bar select {
+  padding: 8px 12px;
+  border: 1px solid var(--line-dark);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--navy);
+}
+
+.reset {
+  border: 0;
+  background: none;
+  color: var(--gold-ink);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px 28px;
+}
+
+.empty {
+  padding: 40px;
+  border: 1px dashed var(--line-dark);
+  border-radius: 8px;
+  color: var(--stone);
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,233 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: calc(18px + env(safe-area-inset-top, 0px)) var(--pad) 18px;
+  color: var(--navy);
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.4s, border-color 0.4s, padding 0.4s var(--ease-out), backdrop-filter 0.4s;
+}
+
+/* Once scrolled: a frosted white bar, readable over photos and dark bands alike. */
+.solid {
+  padding-block: calc(12px + env(safe-area-inset-top, 0px)) 12px;
+  background: rgba(255, 255, 255, 0.84);
+  border-bottom-color: var(--line-dark);
+  box-shadow: 0 8px 30px -18px rgba(25, 40, 63, 0.35);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(14px) saturate(1.2);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+
+.logo {
+  display: block;
+  width: auto;
+  height: 48px;
+  transition: height 0.4s var(--ease-out);
+}
+
+.solid .logo {
+  height: 40px;
+}
+
+@media (max-width: 520px) {
+  .logo {
+    height: 40px;
+  }
+  .solid .logo {
+    height: 34px;
+  }
+}
+
+.menu {
+  display: flex;
+  gap: 34px;
+}
+
+.menu a {
+  position: relative;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s var(--ease-out);
+}
+
+.menu a:hover {
+  color: var(--gold-ink);
+}
+
+.menu a:hover::after,
+.menu a[aria-current="page"]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.book {
+  border: 1px solid var(--navy);
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.book:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--white);
+}
+
+/* ---------- Phone menu ---------- */
+.toggle {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.burger {
+  position: relative;
+  width: 26px;
+  height: 12px;
+}
+
+.burger i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform 0.4s var(--ease-out), top 0.4s var(--ease-out);
+}
+
+.burger i:first-child {
+  top: 0;
+}
+
+.burger i:last-child {
+  top: 10px;
+}
+
+.burgerOpen i:first-child {
+  top: 5px;
+  transform: rotate(45deg);
+}
+
+.burgerOpen i:last-child {
+  top: 5px;
+  transform: rotate(-45deg);
+}
+
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 45; /* under the header so the toggle stays on top */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  padding: calc(110px + env(safe-area-inset-top, 0px)) var(--pad) calc(32px + env(safe-area-inset-bottom, 0px));
+  background: var(--ivory);
+  clip-path: inset(0 0 100% 0);
+  visibility: hidden;
+  transition: clip-path 0.7s cubic-bezier(0.7, 0, 0.2, 1), visibility 0s 0.7s;
+}
+
+.sheetOpen {
+  clip-path: inset(0 0 0 0);
+  visibility: visible;
+  transition: clip-path 0.7s cubic-bezier(0.7, 0, 0.2, 1), visibility 0s;
+}
+
+.sheet nav {
+  display: grid;
+  gap: 6px;
+}
+
+.sheet nav a {
+  font-size: clamp(38px, 11vw, 64px);
+  line-height: 1.05;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.4s, transform 0.6s var(--ease-out);
+}
+
+.sheetOpen nav a {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(0.25s + var(--i) * 0.05s);
+}
+
+.sheet nav a:last-child {
+  color: var(--gold-ink);
+}
+
+.sheetFoot {
+  display: grid;
+  gap: 6px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-dark);
+  color: var(--stone);
+  font-size: 15px;
+}
+
+.sheetFoot a {
+  font-size: 20px;
+  color: var(--navy);
+}
+
+@media (max-width: 900px) {
+  .menu,
+  .book {
+    display: none;
+  }
+  .toggle {
+    display: flex;
+  }
+}
+
+@media (min-width: 901px) {
+  .sheet {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet,
+  .sheetOpen,
+  .sheet nav a {
+    transition: none;
+  }
+}

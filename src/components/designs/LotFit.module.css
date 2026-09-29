@@ -1,0 +1,68 @@
+.fit {
+  margin: 0;
+  display: grid;
+  gap: 12px;
+  padding: 22px;
+  border: 1px solid var(--line-dark);
+  border-radius: 12px;
+  background: var(--white);
+}
+
+.fit svg {
+  width: 100%;
+  max-height: 440px;
+  height: auto;
+  display: block;
+  font-family: var(--font-sans);
+}
+
+.fit figcaption {
+  font-size: 13px;
+  color: var(--stone);
+}
+
+.lot {
+  fill: rgba(25, 40, 63, 0.035);
+  stroke: var(--stone);
+  stroke-dasharray: 4 3;
+}
+
+.house {
+  fill: var(--gold);
+}
+
+.inHouse {
+  fill: var(--white);
+  font-size: 11px;
+  font-weight: 600;
+  text-anchor: middle;
+  font-variant-numeric: tabular-nums;
+}
+
+.dim {
+  stroke: var(--gold-ink);
+}
+
+.dimText {
+  fill: var(--gold-ink);
+  font-size: 11px;
+  text-anchor: middle;
+}
+
+.side {
+  fill: var(--stone);
+  font-size: 10px;
+  text-anchor: middle;
+}
+
+.street {
+  stroke: var(--navy);
+  stroke-width: 2;
+}
+
+.streetText {
+  fill: var(--stone);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-anchor: middle;
+}

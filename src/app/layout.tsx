@@ -1,0 +1,61 @@
+import type { Metadata, Viewport } from "next";
+import { Archivo, Bodoni_Moda } from "next/font/google";
+import { MotionProvider } from "@/lib/motion";
+import { site } from "@/lib/site";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import SmoothScroll from "@/components/layout/SmoothScroll";
+import MotionNotice from "@/components/layout/MotionNotice";
+import "./globals.css";
+
+// Archivo's width axis gives the expanded display cuts; Bodoni Moda is the italic accent.
+const archivo = Archivo({
+  subsets: ["latin"],
+  axes: ["wdth"],
+  variable: "--font-archivo",
+  display: "swap",
+});
+
+const bodoni = Bodoni_Moda({
+  subsets: ["latin"],
+  style: ["italic"],
+  axes: ["opsz"],
+  variable: "--font-bodoni",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} · Brisbane home builder · ${site.slogan}`,
+    template: `%s · ${site.name}`,
+  },
+  description: site.description,
+  openGraph: {
+    siteName: site.name,
+    locale: "en_AU",
+    type: "website",
+    images: ["/images/home/hero-gardenwood.jpg"],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0c1626",
+  viewportFit: "cover",
+};
+
+export default function RootLayout({ children }: LayoutProps<"/">) {
+  return (
+    <html lang="en-AU" className={`${archivo.variable} ${bodoni.variable}`}>
+      <body>
+        <MotionProvider>
+          <SmoothScroll />
+          <Header />
+          {children}
+          <Footer />
+          <MotionNotice />
+        </MotionProvider>
+      </body>
+    </html>
+  );
+}

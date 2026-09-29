@@ -1,0 +1,102 @@
+.foot {
+  background: var(--navy);
+  color: var(--bone);
+  padding: 80px var(--pad) 0;
+  display: grid;
+  /* minmax(0, 1fr) stops the nowrap wordmark from widening every row. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: 60px;
+  overflow: hidden;
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+.brand {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+.cols p {
+  color: var(--mist);
+  max-width: 44ch;
+  font-size: 15px;
+}
+
+.cols .slogan {
+  font-size: 24px;
+  line-height: 1.1;
+  color: var(--gold-2);
+}
+
+.hours {
+  color: var(--mist);
+  font-size: 14px;
+}
+
+.cols ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.cols a:hover {
+  color: var(--gold-2);
+}
+
+.h {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.note {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 13px;
+  color: var(--mist);
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+
+.giant {
+  font-weight: 900;
+  font-stretch: 125%;
+  /* ~5.4em wide at weight 900, so this fills the space between the side margins. */
+  font-size: calc((100vw - 2 * var(--pad)) / 5.45);
+  line-height: 0.74;
+  letter-spacing: -0.04em;
+  color: var(--gold);
+  white-space: nowrap;
+  text-align: center;
+  margin-bottom: -2.2vw;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (max-width: 900px) {
+  .cols {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .cols {
+    grid-template-columns: 1fr;
+  }
+}

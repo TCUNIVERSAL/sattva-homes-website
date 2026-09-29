@@ -1,0 +1,84 @@
+.page {
+  display: grid;
+  gap: clamp(40px, 5vw, 70px);
+  padding: clamp(120px, 14vw, 180px) var(--pad) 120px;
+  background: var(--ivory);
+}
+
+.head {
+  display: grid;
+  gap: 18px;
+}
+
+.head :global(.label) {
+  color: var(--gold-ink);
+}
+
+.head h1 {
+  max-width: 15ch;
+  font-size: clamp(46px, 7.4vw, 128px);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+}
+
+.head h1 :global(.serif) {
+  color: var(--gold-ink);
+}
+
+.head p {
+  max-width: 48ch;
+  font-size: 19px;
+  color: var(--stone);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) 1.6fr;
+  align-items: start;
+  gap: clamp(30px, 5vw, 80px);
+}
+
+.details {
+  display: grid;
+  gap: 28px;
+}
+
+.details div {
+  display: grid;
+  gap: 8px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line-dark);
+}
+
+.details h2 {
+  color: var(--gold-ink);
+}
+
+.details p {
+  font-size: 19px;
+}
+
+.details a:hover {
+  color: var(--gold-ink);
+}
+
+.link {
+  font-size: 14px;
+  color: var(--gold-ink);
+}
+
+.muted {
+  color: var(--stone);
+}
+
+.ack {
+  max-width: 70ch;
+  font-size: 14px;
+  color: var(--stone);
+}
+
+@media (max-width: 900px) {
+  .body {
+    grid-template-columns: 1fr;
+  }
+}
