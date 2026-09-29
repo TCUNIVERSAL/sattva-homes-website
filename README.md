@@ -45,7 +45,7 @@ scripts/import-designs.mjs  Downloads facade originals, records their size, rebu
 scripts/enhance-designs.py  Builds the web copies of the facades (upscales the small ones)
 scripts/enhance-image.py  Cleans up and upscales a single render (used for the homepage images)
 scripts/make-logos.py     Builds the web logo files from research/brand/SATTVA_HQ.png
-research/                 Audit of the old site and the raw scraped data
+research/                 Local only, not in git: old-site audit, scraped data, original images
 ```
 
 ## How the motion works
@@ -55,6 +55,8 @@ research/                 Audit of the old site and the raw scraped data
 - The Build section falls back to `ProcessCards` when motion is off or WebGL isn't available. Three.js is loaded only when the 3D section is used.
 
 ## Updating the design catalogue
+
+The `research/` folder is kept out of git. It holds the inputs for the scripts below, so they only run on a machine that has it. The site itself doesn't need it: the generated images and `designs.json` are committed.
 
 `research/home-designs.json` holds the 128 designs scraped from the old site. To regenerate the app data and images:
 
