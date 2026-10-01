@@ -14,7 +14,6 @@ export default function HomeHero() {
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
       <div className={styles.copy}>
-        <p className={styles.chip}>Brisbane home builder · Display home in Willawong</p>
         <h1 id="hero-title" className="display">
           Clarity before commitment. <span className="serif">A Brisbane home, delivered as agreed.</span>
         </h1>
@@ -38,11 +37,6 @@ export default function HomeHero() {
           <Image src="/images/home/hero-springdale.jpg" priority quality={95} fill
             alt="Springdale double storey home design by Sattva Homes, with a front verandah, balcony and double garage"
             sizes="(max-width: 900px) 100vw, 48vw" />
-        </div>
-        <div className={`${styles.card} ${styles.cardTop}`}>
-          <span className={styles.cardLabel}>Display home</span>
-          <b>71 Waters Street, Willawong</b>
-          <span>{site.hours.map((h) => `${h.days} ${h.time}`).join(" · ")}</span>
         </div>
         <div className={`${styles.card} ${styles.cardBottom}`}>
           <span className={styles.cardLabel}>Track record</span>
