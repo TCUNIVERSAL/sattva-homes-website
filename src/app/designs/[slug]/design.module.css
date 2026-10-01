@@ -22,9 +22,9 @@
 }
 
 .head h1 {
-  font-size: clamp(56px, 11vw, 190px);
-  line-height: 0.84;
-  letter-spacing: -0.045em;
+  font-size: clamp(44px, 6.4vw, 92px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
 }
 
 .head p {
@@ -148,7 +148,7 @@
 }
 
 .related h2 {
-  font-size: clamp(36px, 5vw, 72px);
+  font-size: clamp(30px, 3.6vw, 48px);
 }
 
 .related h2 :global(.serif) {

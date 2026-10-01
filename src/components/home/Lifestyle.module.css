@@ -1,0 +1,49 @@
+.life {
+  background: var(--white);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.card {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+}
+
+.ph {
+  position: relative;
+  aspect-ratio: 4 / 3.3;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--sand);
+}
+
+.ph img {
+  object-fit: cover;
+}
+
+.card figcaption {
+  display: grid;
+  gap: 6px;
+}
+
+.card b {
+  font-size: 24px;
+}
+
+.card span {
+  font-size: 15px;
+  color: var(--slate);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

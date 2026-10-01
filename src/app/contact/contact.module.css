@@ -16,9 +16,9 @@
 
 .head h1 {
   max-width: 15ch;
-  font-size: clamp(46px, 7.4vw, 128px);
-  line-height: 0.88;
-  letter-spacing: -0.04em;
+  font-size: clamp(40px, 5.6vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
 }
 
 .head h1 :global(.serif) {

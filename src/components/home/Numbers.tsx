@@ -1,45 +1,25 @@
-"use client";
-
-import { useRef } from "react";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
-import { useMotion } from "@/lib/motion";
 import { site } from "@/lib/site";
 import styles from "./Numbers.module.css";
 
-const fmt = (n: number) => Math.round(n).toLocaleString("en-AU");
+const fmt = (n: number) => n.toLocaleString("en-AU");
 
-/** Company stats. The final values are in the HTML; motion only counts up to them. */
+/** Company stats from the current site (confirm with the client before launch). */
 export default function Numbers() {
-  const { enabled } = useMotion();
-  const root = useRef<HTMLElement>(null);
-
-  useGSAP(() => {
-    if (!enabled) return;
-    gsap.utils.toArray<HTMLElement>("[data-count]").forEach((el) => {
-      const end = Number(el.dataset.count), o = { v: 0 };
-      ScrollTrigger.create({
-        trigger: el, start: "top 85%", once: true,
-        onEnter: () => gsap.fromTo(o, { v: 0 }, { v: end, duration: 1.8, ease: "power3.out", onUpdate: () => { el.textContent = fmt(o.v); } }),
-      });
-    });
-  }, { scope: root, dependencies: [enabled], revertOnUpdate: true });
-
   return (
-    <section ref={root} className={styles.nums} aria-label="Sattva in numbers">
+    <section className={`section ${styles.nums}`} aria-labelledby="numbers-title">
       <div className={styles.head}>
-        <h2 className="display">Built with <span className="serif">care,</span> one home at a time.</h2>
+        <span className="eyebrow">Our track record</span>
+        <h2 id="numbers-title" className="display">Built with <span className="serif">care,</span> one home at a time.</h2>
         <p>A growing Brisbane home builder, and the new homes we&apos;ve delivered so far.</p>
       </div>
-      <div className={styles.grid}>
+      <dl className={styles.grid}>
         {site.stats.map((s) => (
           <div key={s.label}>
-            <b className="tabular">
-              {s.prefix}<span data-count={s.value}>{fmt(s.value)}</span><small>{s.suffix}</small>
-            </b>
-            <span>{s.label}</span>
+            <dt>{s.label}</dt>
+            <dd className="tabular">{s.prefix}{fmt(s.value)}<small>{s.suffix}</small></dd>
           </div>
         ))}
-      </div>
+      </dl>
     </section>
   );
 }

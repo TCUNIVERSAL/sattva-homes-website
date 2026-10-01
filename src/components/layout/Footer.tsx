@@ -24,7 +24,7 @@ export default function Footer() {
         <div>
           <h2 className={styles.h}>Company</h2>
           <ul>
-            <li><Link href="/#how-we-build">How it works</Link></li>
+            <li><Link href="/how-we-build">How we build</Link></li>
             <li><Link href="/#visit">Display home</Link></li>
             <li><Link href="/designs">All designs</Link></li>
             <li><Link href="/contact">Contact</Link></li>

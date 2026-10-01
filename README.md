@@ -2,7 +2,7 @@
 
 New website for [Sattva Homes](https://sattva.com.au), a Brisbane home builder with a display home in Willawong, QLD. It replaces the current WordPress/Elementor site.
 
-Built with Next.js 16 (App Router, Turbopack), React 19, TypeScript, CSS Modules, GSAP + ScrollTrigger, Lenis and Three.js.
+Built with Next.js 16 (App Router, Turbopack), React 19, TypeScript and CSS Modules. GSAP + ScrollTrigger and Three.js power the 3D build on the How we build page; the rest of the site is static.
 
 ## Getting started
 
@@ -19,25 +19,25 @@ npm run lint
 ```
 src/
   app/                    Routes
-    page.tsx              Homepage (composes the sections below, in order)
+    page.tsx              Homepage: Hero, Why Sattva, Designs, How it works, Lifestyle, Numbers, Visit
+    how-we-build/         The five steps with the 3D house that builds as you scroll
     designs/page.tsx      Catalogue with filters (/designs?series=essence works)
     designs/[slug]/       One static page per design, from designs.json
     contact/page.tsx      Contact details and enquiry form (?design=slug or ?enquiry=visit prefill it)
-    layout.tsx            Fonts, metadata, header, footer, smooth scroll
+    layout.tsx            Fonts, metadata, business JSON-LD, header, footer
     globals.css           Brand tokens (navy #19283F, gold #AC8654) and base styles
   components/
-    layout/               Header (with phone menu), Footer, SmoothScroll (Lenis), MotionNotice
-    home/                 Homepage sections: Preloader, Hero, Manifesto, Marquee,
-                          Collection, DayAtHome, Numbers, Values, Build, ProcessCards, Visit
+    layout/               Header (with phone menu), Footer, MotionNotice
+    home/                 HomeHero, WhySattva, HomeDesigns, ProcessPreview, Lifestyle, Numbers, Visit,
+                          plus Build and ProcessCards (used on /how-we-build) and buildStages.ts
     contact/              EnquiryForm
     designs/              DesignCard, DesignFinder, LotFit
     three/houseScene.ts   The 3D house that builds itself (no React inside)
-    ui/                   MagneticButton, BrisbaneClock
   lib/
     designs.ts            Typed access to the design catalogue
     site.ts               Contact details, hours, stats, values, copy from the old site, navigation
     motion.tsx            Motion on/off (respects reduced motion, with opt-in)
-    gsap.ts, scroll.ts    Shared GSAP registration and Lenis instance
+    gsap.ts, scroll.ts    Shared GSAP registration; smooth scroll to the top or a section
   types/design.ts
   data/designs.json       Generated, do not edit by hand
 public/images/            designs/ (128 facades), home/, brand/ (logo files)
@@ -48,11 +48,12 @@ scripts/make-logos.py     Builds the web logo files from research/brand/SATTVA_H
 research/                 Local only, not in git: old-site audit, scraped data, original images
 ```
 
-## How the motion works
+## Motion
 
-- Every animated component checks `useMotion().enabled`. If the device has reduced motion turned on, the site renders a complete static version and shows a small "Play animations" bar. The visitor's choice is remembered.
-- The pinned sections (Hero, Collection, Build) must stay in page order in `app/page.tsx`. ScrollTrigger measures later sections based on the pins above them.
-- The Build section falls back to `ProcessCards` when motion is off or WebGL isn't available. Three.js is loaded only when the 3D section is used.
+The client asked for no flashy animation, so the homepage is static and leads with the brand promise. The only scroll animation is the 3D build on `/how-we-build`:
+
+- It checks `useMotion().enabled`. If the device has reduced motion turned on, the page shows the five steps as plain cards (`ProcessCards`) and a small "Play animations" bar. The visitor's choice is remembered.
+- The build section renders its static fallback on the server and swaps in the 3D scene after loading, so its pin uses `refreshPriority` and refreshes ScrollTrigger once created. Three.js is loaded only when the page is opened.
 
 ## Updating the design catalogue
 

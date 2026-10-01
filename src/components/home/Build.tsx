@@ -23,7 +23,7 @@ const subscribe = () => () => {};
 const useWebGL = () => useSyncExternalStore(subscribe, webglSupported, () => false);
 
 /**
- * "Your journey": a pinned section where scrolling walks through the five steps while a 3D house builds.
+ * The /how-we-build walkthrough: a pinned section where scrolling steps through the five stages while a 3D house builds.
  * Falls back to stacked process cards without motion or WebGL.
  */
 export default function Build() {
@@ -44,9 +44,16 @@ function BuildScene() {
     let cancelled = false;
     let target = 0, progress = 0, dirty = true, current = 0;
 
-    // The pin is created now, in page order, so later sections measure correctly.
+    // This scene mounts a moment after the rest of the page (the server renders the static
+    // fallback first), so the refresh re-measures anything below it with this pin's scroll
+    // space; refreshPriority keeps the pin measured first if more scroll effects are added.
     // Three.js loads in the background and starts drawing when ready.
-    ScrollTrigger.create({ trigger: root.current, start: "top top", end: PIN_LENGTH, pin: true, onUpdate: (st) => { target = st.progress; } });
+    ScrollTrigger.create({
+      trigger: root.current, start: "top top", end: PIN_LENGTH, pin: true, refreshPriority: 1,
+      onUpdate: (st) => { target = st.progress; },
+    });
+    ScrollTrigger.sort();
+    const refreshId = requestAnimationFrame(() => ScrollTrigger.refresh());
 
     const resize = () => {
       const c = canvas.current;
@@ -81,6 +88,7 @@ function BuildScene() {
 
     return () => {
       cancelled = true;
+      cancelAnimationFrame(refreshId);
       gsap.ticker.remove(tick);
       window.removeEventListener("resize", resize);
       scene?.dispose();

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { nav, site, addressLine } from "@/lib/site";
-import { getLenis, scrollToHash, scrollToTop } from "@/lib/scroll";
+import { scrollToHash, scrollToTop } from "@/lib/scroll";
 import styles from "./Header.module.css";
 
 // The header turns into a solid bar once the page has scrolled a little.
@@ -23,13 +23,10 @@ export default function Header() {
   // Pause page scrolling while the phone menu is open; Escape closes it.
   useEffect(() => {
     if (!open) return;
-    const lenis = getLenis();
-    lenis?.stop();
     document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
     window.addEventListener("keydown", onKey);
     return () => {
-      lenis?.start();
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKey);
     };
@@ -45,7 +42,7 @@ export default function Header() {
       return;
     }
     if (pathname === "/" && href.startsWith("/#")) {
-      // Wait a frame so scrolling is unpaused before gliding.
+      // Wait a frame so the menu has released scrolling before gliding.
       e.preventDefault();
       requestAnimationFrame(() => { if (!scrollToHash(href.slice(1))) window.location.assign(href); });
     }

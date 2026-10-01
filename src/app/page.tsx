@@ -1,32 +1,25 @@
 import type { Metadata } from "next";
-import Preloader from "@/components/home/Preloader";
-import Hero from "@/components/home/Hero";
-import Manifesto from "@/components/home/Manifesto";
-import Marquee from "@/components/home/Marquee";
-import Collection from "@/components/home/Collection";
-import DayAtHome from "@/components/home/DayAtHome";
+import HomeHero from "@/components/home/HomeHero";
+import WhySattva from "@/components/home/WhySattva";
+import HomeDesigns from "@/components/home/HomeDesigns";
+import ProcessPreview from "@/components/home/ProcessPreview";
+import Lifestyle from "@/components/home/Lifestyle";
 import Numbers from "@/components/home/Numbers";
-import Values from "@/components/home/Values";
-import Build from "@/components/home/Build";
 import Visit from "@/components/home/Visit";
-import { getAllDesigns, getFeaturedDesigns, getSeries } from "@/lib/designs";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
-// Section order matters: pinned sections (Hero, Collection, Build) register their
-// scroll triggers in page order so everything below them measures correctly.
+// Clarity first: who Sattva is and what it promises, then the homes, the process
+// (in full on /how-we-build), local living, the track record and the display home.
 export default function HomePage() {
   return (
     <main>
-      <Preloader />
-      <Hero designCount={getAllDesigns().length} />
-      <Marquee />
-      <Collection designs={getFeaturedDesigns()} series={getSeries()} total={getAllDesigns().length} />
-      <Build />
-      <Manifesto />
-      <DayAtHome />
+      <HomeHero />
+      <WhySattva />
+      <HomeDesigns />
+      <ProcessPreview />
+      <Lifestyle />
       <Numbers />
-      <Values />
       <Visit />
     </main>
   );

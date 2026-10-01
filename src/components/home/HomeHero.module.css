@@ -1,0 +1,165 @@
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(40px, 6vw, 96px);
+  min-height: min(100svh, 980px);
+  padding: clamp(110px, 12vw, 150px) var(--pad) clamp(64px, 8vw, 110px);
+  background:
+    radial-gradient(60% 50% at 85% 20%, rgba(172, 134, 84, 0.1), transparent 70%),
+    var(--ivory);
+}
+
+.copy {
+  display: grid;
+  gap: 24px;
+  max-width: 640px;
+}
+
+.chip {
+  justify-self: start;
+  padding: 7px 14px;
+  border: 1px solid var(--line-dark);
+  border-radius: 999px;
+  background: var(--white);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--slate);
+}
+
+.copy h1 {
+  font-size: clamp(40px, 5.2vw, 72px);
+  line-height: 1.04;
+}
+
+.copy h1 :global(.serif) {
+  display: block;
+  color: var(--gold-ink);
+}
+
+.lede {
+  max-width: 52ch;
+  font-size: 18px;
+  color: var(--slate);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.ticks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  color: var(--slate);
+}
+
+.ticks li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ticks li::before {
+  content: "";
+  width: 14px;
+  height: 8px;
+  margin-top: -3px;
+  border-left: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  transform: rotate(-45deg);
+}
+
+.visual {
+  position: relative;
+  padding: 0 0 40px 0;
+}
+
+.photo {
+  position: relative;
+  aspect-ratio: 4 / 4.4;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--sand);
+  box-shadow: 0 40px 80px -48px rgba(25, 40, 63, 0.45);
+}
+
+.photo img {
+  object-fit: cover;
+  /* The square render: keep the house and verandah, trim some sky and driveway. */
+  object-position: 30% 60%;
+}
+
+/* Small information cards resting on the photo. */
+.card {
+  position: absolute;
+  display: grid;
+  gap: 4px;
+  max-width: 290px;
+  padding: 14px 18px;
+  border: 1px solid var(--line-dark);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 18px 40px -22px rgba(25, 40, 63, 0.4);
+  font-size: 13px;
+  color: var(--slate);
+}
+
+.card b {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.cardLabel {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold-ink);
+}
+
+.cardTop {
+  top: 24px;
+  left: -28px;
+}
+
+.cardBottom {
+  right: -20px;
+  bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .photo {
+    aspect-ratio: 4 / 3.4;
+  }
+  .cardTop {
+    left: 12px;
+    top: 12px;
+  }
+  .cardBottom {
+    right: 12px;
+  }
+}
+
+@media (max-width: 520px) {
+  .card {
+    position: static;
+    max-width: none;
+    margin-top: 12px;
+  }
+  .visual {
+    padding: 0;
+  }
+}

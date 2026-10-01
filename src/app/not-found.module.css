@@ -14,8 +14,8 @@
 
 .page h1 {
   max-width: 14ch;
-  font-size: clamp(48px, 8vw, 130px);
-  line-height: 0.88;
+  font-size: clamp(40px, 5.6vw, 76px);
+  line-height: 1.02;
 }
 
 .page h1 :global(.serif) {

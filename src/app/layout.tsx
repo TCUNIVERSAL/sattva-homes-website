@@ -1,14 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Bodoni_Moda } from "next/font/google";
+import { Archivo, Newsreader } from "next/font/google";
 import { MotionProvider } from "@/lib/motion";
 import { site, businessJsonLd, jsonLd } from "@/lib/site";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import SmoothScroll from "@/components/layout/SmoothScroll";
-import MotionNotice from "@/components/layout/MotionNotice";
 import "./globals.css";
 
-// Archivo's width axis gives the expanded display cuts; Bodoni Moda is the italic accent.
+// Newsreader for headings and italic accents, Archivo for body text.
 const archivo = Archivo({
   subsets: ["latin"],
   axes: ["wdth"],
@@ -16,11 +14,11 @@ const archivo = Archivo({
   display: "swap",
 });
 
-const bodoni = Bodoni_Moda({
+const newsreader = Newsreader({
   subsets: ["latin"],
-  style: ["italic"],
+  style: ["normal", "italic"],
   axes: ["opsz"],
-  variable: "--font-bodoni",
+  variable: "--font-newsreader",
   display: "swap",
 });
 
@@ -48,15 +46,13 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-AU" className={`${archivo.variable} ${bodoni.variable}`}>
+    <html lang="en-AU" className={`${archivo.variable} ${newsreader.variable}`}>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(businessJsonLd)} />
         <MotionProvider>
-          <SmoothScroll />
           <Header />
           {children}
           <Footer />
-          <MotionNotice />
         </MotionProvider>
       </body>
     </html>
